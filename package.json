@@ -1,0 +1,17 @@
+{
+  "author": "Nicholas Funnell <nick@nick.gs> (http://www.nick.gs)",
+  "name": "marionette.mmv",
+  "description": "Multi Model View",
+  "version": "0.1.0",
+  "homepage": "http://github.com/nickfun/marionette.mmv",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nickfun/marionette.mmv.git"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}
