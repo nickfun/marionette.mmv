@@ -8,7 +8,16 @@ module.exports = function(grunt) {
 		// tasks
 		uglify: {
 		}
+
+		coffee: {
+			src: 'app.coffee',
+			dest: 'app.js'
+		}
 	});
 
 	// import the modules
+	grunt.loadNpmTasks('grunt-coffee');
+
+	// default task
+	grunt.registerTask('default', ['coffee']);
 });
