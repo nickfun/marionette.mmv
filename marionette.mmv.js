@@ -45,8 +45,9 @@ Backbone.Marionette.MultiModelView = Backbone.Marionette.ItemView.extend({
 		// Note that the base model will overwrite anything that is already there
 		// so be careful of collisions with the names being passed in on the 'models' option
 		if( baseModel instanceof Backbone.Model ) {
-			data = baseModel.toJSON();
+			data = _.extend(data, baseModel.toJSON());
 		}
+		console.log('serializeData:', data);
 		return data;
 	}
 });
