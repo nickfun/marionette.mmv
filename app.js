@@ -111,4 +111,5 @@ app.module("List", function(List, app, Backbone, Marionette, $, _) {
 		});
 		app.kirkRegion.show( oneView );
 	});
+
 });

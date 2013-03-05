@@ -23,7 +23,7 @@ Backbone.Marionette.MultiModelView = Backbone.Marionette.ItemView.extend({
 		_.each(models, function(element, index) {
 			if( element instanceof Backbone.Model ) {
 				// use it as-is
-				data[index] = element.attributes;
+				data[index] = element.toJSON();
 			} else if( typeof element === 'function') {
 				// assume it is a fetch function
 				var fetchedModel = element(baseModel);
