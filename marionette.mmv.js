@@ -32,11 +32,11 @@ Backbone.Marionette.MultiModelView = Backbone.Marionette.ItemView.extend({
 					// use the fetched model
 					data[index] = fetchedModel.toJSON();
 				} else {
-					// function returned something else, bailing out :(
+					// function returned something else, bail out :(
 					throw new Error("result of fetch function wasn't a Backbone Model")
 				}
 			} else {
-				// error
+				// user passed in something other than a BB Model or a function
 				throw new Error("Must be a Backbone Model or a function that returns one")
 			}
 		});
@@ -47,7 +47,6 @@ Backbone.Marionette.MultiModelView = Backbone.Marionette.ItemView.extend({
 		if( baseModel instanceof Backbone.Model ) {
 			data = _.extend(data, baseModel.toJSON());
 		}
-		console.log('serializeData:', data);
 		return data;
 	}
 });
