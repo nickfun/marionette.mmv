@@ -5,14 +5,14 @@
 	<title>MMV Example</title>
 	<!-- include the dependences -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/1.0.1/lodash.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/1.0.1/lodash.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.10/backbone-min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/backbone.marionette/1.0.0-rc4-bundled/backbone.marionette.js"></script>
 	<!-- our plugin -->
-	<script src="/marionette.mmv/marionette-mmv.js"></script>
+	<script src="./marionette.mmv.js"></script>
 
 	<!-- our app -->
-	<script src="/marionette.mmv/app.js"></script>
+	<script src="./app.js"></script>
 
 	<style>
 		td { 
@@ -24,6 +24,7 @@
 <body>
 	<h1>Title!</h1>
 	<div id="content"></div>
+	<div id="kirk"></div>
 
 	<!-- begin the app! -->
 	<script>
@@ -53,6 +54,12 @@
 			</thead>
 			<tbody></tbody>
 		</table>
+	</script>
+
+	<script type="text/template" id="tpl-kirk">
+		<h3><%= pilot.name %></h3>
+		Your current score is <%= score.currentScore %>
+		Your high score is <%= score.highScore %>
 	</script>
 </body>
 </html>
