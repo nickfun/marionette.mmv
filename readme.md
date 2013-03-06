@@ -53,4 +53,4 @@ Let's call the model that a CollectionView or CompositeView pass in a *base mode
 	  collection: playerCollection
 	});
 
-write more here :)
+When the CollectionView passes a model to the MutliModelView, my plugin will check the `models` object and see if you have a model there or a function that takes a model. If you have put a function there, then the function will be called and the model from the CollectionView will be passed as an argument. Your function should use that model to return the other model that you want.
