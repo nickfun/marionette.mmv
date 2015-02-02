@@ -3,6 +3,8 @@
 This is a plugin for [Marionette](http://www.marionettejs.com). It is a specialized ItemView 
 that you can use when you want to show more than one model in your view.
 
+This plugin was built and tested on Marionette 1.x. A revision for Marionette 2 is not yet available.
+
 ## Usage
 
 Here is a simple example, but see our wiki on github for more details.
@@ -13,23 +15,24 @@ In normal usage of an ItemView, you pass in a model propery to the options when 
 
 Say we are making a game involving spaceships. You will have a player and the player has a score. You could have a model for the score and for the player. How would you show the data for both in one view? Lets make a score screen using MultiModelView.
 
-	var playerModel = new PlayerModel({ id: 1, name: 'Player 1' });
-	var scoreModel  = new ScoreModel({ current: 100, record: 1200, player_id: 1 });
-	
-	var myScoreScreenView = new Backbone.Marionette.MultiModelView({
-	  models: {
-	    player: playerModel,
-	    score: scoreModel
-	  },
-	  template: '#tpl-scorescreen'
-	});
+```javascript
+var playerModel = new PlayerModel({ id: 1, name: 'Player 1' });
+var scoreModel  = new ScoreModel({ current: 100, record: 1200, player_id: 1 });
 
-	//define your template somewhere:
-	<script type="text/template" id="tpl-scorescreen">
-      <h3> <%= player.name %> </h3>
-      <div class="currentScore"> <%= score.current %> </div>
-      <div class="recordScore"> <%= score.record %> </div>
-	</script>
+var myScoreScreenView = new Backbone.Marionette.MultiModelView({
+  models: {
+    player: playerModel,
+    score: scoreModel
+  },
+  template: '#tpl-scorescreen'
+});
+//define your template somewhere:
+<script type="text/template" id="tpl-scorescreen">
+     <h3> <%= player.name %> </h3>
+     <div class="currentScore"> <%= score.current %> </div>
+     <div class="recordScore"> <%= score.record %> </div>
+</script>
+```
 
 The keys in the `models` object become the prefix/namespace for the data in the models.
 
@@ -40,17 +43,18 @@ In the first example we defined all the models and passed them in at once. This 
 
 Let's call the model that a CollectionView or CompositeView pass in a *base model*. As long as the other models you want to pass in are related to this base model, you can define a function to get the other models. Define your function instead of passing in the model.
 
-	var myScoreScreenView = Backbone.Marionette.MultiModelView.extend({
-	  models: {
-	    score: function(baseModel) {
-	      return getScoreByPlayerId( baseModel.id );
-	    }
-	  }
-	});
-
-	var myCollectionView = new Backbone.Marionette.CollectionView({
-	  ItemView: myScoreScreenView,
-	  collection: playerCollection
-	});
+```javascript
+var myScoreScreenView = Backbone.Marionette.MultiModelView.extend({
+  models: {
+    score: function(baseModel) {
+      return getScoreByPlayerId( baseModel.id );
+    }
+  }
+});
+var myCollectionView = new Backbone.Marionette.CollectionView({
+  ItemView: myScoreScreenView,
+  collection: playerCollection
+});
+```
 
 When the CollectionView passes a model to the MutliModelView, my plugin will check the `models` object and see if you have a model there or a function that takes a model. If you have put a function there, then the function will be called and the model from the CollectionView will be passed as an argument. Your function should use that model to return the other model that you want.
